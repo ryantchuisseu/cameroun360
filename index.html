@@ -50,7 +50,7 @@ h2.h{font-size:clamp(34px,5.4vw,76px);font-weight:600}h2.h .it{color:var(--g2)}
 .lead em{font:italic 400 1.12em "Instrument Serif";color:var(--g2)}
 /* strips */
 .strips{display:flex;gap:12px;height:min(640px,76vh)}
-.strip{flex:1;position:relative;border-radius:var(--r);overflow:hidden;color:#fff;padding:24px;display:flex;flex-direction:column;justify-content:flex-end;transition:flex .35s var(--eio);isolation:isolate}
+.strip{flex:1;position:relative;border-radius:var(--r);overflow:hidden;color:#fff;padding:24px;display:flex;flex-direction:column;justify-content:flex-end;transition:flex .47s var(--eio);isolation:isolate}
 .strip img,.slot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform .8s var(--eo)}
 .strip::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(0deg,#000a,#0000 55%)}
 .strip .n{position:absolute;top:22px;left:24px;font:italic 400 18px "Instrument Serif";opacity:.85}
@@ -122,7 +122,7 @@ header.solid .sw button.on{background:var(--g);color:#fff}
 .hero .in{height:100%;display:flex;flex-direction:column;justify-content:center;padding:110px 28px 150px;max-width:1280px}
 .hero h1.sl{font:italic 400 clamp(26px,3vw,42px)/1.1 "Instrument Serif",serif;letter-spacing:0;color:var(--gold);max-width:none}
 .hero .intro{font-size:15px;opacity:.85;max-width:52ch;margin-top:8px}.hero .top{margin-bottom:5vh}
-.txt{max-width:640px;transition:opacity .14s var(--eo),transform .14s var(--eo),filter .14s}.txt.out{opacity:0;transform:translateY(10px);filter:blur(4px)}
+.txt{max-width:640px;transition:opacity .17s var(--eo),transform .17s var(--eo),filter .17s}.txt.out{opacity:0;transform:translateY(10px);filter:blur(4px)}
 .eyebrow-s{font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;display:flex;align-items:center;gap:12px}.eyebrow-s::before{content:"";width:30px;height:2px;background:var(--gold)}
 .hero .st{white-space:nowrap;font-size:clamp(40px,5.8vw,88px);line-height:.92;font-weight:800;text-transform:uppercase;letter-spacing:-.025em;margin:16px 0 20px}
 .hero .sp2{max-width:46ch;font-size:16px;opacity:.92;margin-bottom:26px}
@@ -137,7 +137,7 @@ header.solid .sw button.on{background:var(--g);color:#fff}
 .ctl{position:absolute;left:0;right:0;bottom:30px;display:flex;align-items:center;gap:12px;z-index:3;margin:auto;max-width:1280px;padding:0 28px}
 .cb{width:44px;height:44px;border-radius:50%;box-shadow:inset 0 0 0 1.5px #fff9;display:grid;place-items:center;flex:none;transition:transform .16s var(--eo),background .2s}.cb:active{transform:scale(.95)}
 @media(hover:hover){.cb:hover{background:#fff2}}
-.prog{flex:1;height:2px;background:#ffffff40;position:relative;overflow:hidden;margin:0 10px}.prog i{position:absolute;inset:0;background:var(--gold);transform-origin:left;transform:scaleX(0);animation:fill 3.5s linear forwards}
+.prog{flex:1;height:2px;background:#ffffff40;position:relative;overflow:hidden;margin:0 10px}.prog i{position:absolute;inset:0;background:var(--gold);transform-origin:left;transform:scaleX(0);animation:fill 4.2s linear forwards}
 .hero.paused .prog i,.hero.hov .prog i{animation-play-state:paused}@keyframes fill{to{transform:scaleX(1)}}
 .cnt{font-size:14px;opacity:.9;white-space:nowrap}.cnt b{font:800 22px "Bricolage Grotesque"}
 @media(max-width:900px){.hero{min-height:740px}.hero .in{padding:84px 20px 290px;justify-content:flex-start}.hero .intro{display:none}.hero .top{margin-bottom:22px}.hero .sp2{font-size:14px;margin-bottom:16px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}.hero .st{margin:10px 0 12px}.hero .top{margin-bottom:3vh}.hero .st{font-size:clamp(34px,10.6vw,60px)}.hero .sp2{font-size:15px}
@@ -247,8 +247,8 @@ function initHero(){const h=$('#hero');if(!h)return;hbusy=false;const N=S.length
   const layer=document.createElement('div');layer.className='bgl';layer.style.backgroundImage=`url(img/${S[n].img}.jpg)`;layer.style.clipPath=from;bgs.append(layer);
   hcur=n;txt.classList.add('out');
   const done=()=>{bgs.querySelectorAll('.bgl').forEach(e=>{if(e!==layer)e.remove()});layer.style.clipPath='none';hbusy=false};
-  if(RM||!layer.animate)done();else layer.animate([{clipPath:from},{clipPath:'inset(0px 0px 0px 0px round 0px)'}],{duration:380,easing:'cubic-bezier(.77,0,.175,1)',fill:'forwards'}).onfinish=done;
-  setTimeout(()=>{txt.innerHTML=slideTxt(n);txt.classList.remove('out');cards.innerHTML=cardsHTML();$('#cn').textContent=String(n+1).padStart(2,'0');restart()},RM?0:120)};
+  if(RM||!layer.animate)done();else layer.animate([{clipPath:from},{clipPath:'inset(0px 0px 0px 0px round 0px)'}],{duration:490,easing:'cubic-bezier(.77,0,.175,1)',fill:'forwards'}).onfinish=done;
+  setTimeout(()=>{txt.innerHTML=slideTxt(n);txt.classList.remove('out');cards.innerHTML=cardsHTML();$('#cn').textContent=String(n+1).padStart(2,'0');restart()},RM?0:160)};
  cards.onclick=e=>{const b=e.target.closest('[data-i]');if(b)go(+b.dataset.i)};
  $('#hn').onclick=()=>go((hcur+1)%N);$('#hpv').onclick=()=>go((hcur-1+N)%N);
  bar.addEventListener('animationend',()=>go((hcur+1)%N));
